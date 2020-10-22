@@ -1,4 +1,4 @@
-# StallAdmin-Web
+# Stall-Admin-Web
 
 ## Project setup
 ```
