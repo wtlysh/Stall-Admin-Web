@@ -1,5 +1,5 @@
 <template>
-  <div id="home"></div>
+  <div id="home" class="absolute flex"></div>
 </template>
 
 <script>
