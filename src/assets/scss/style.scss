@@ -171,6 +171,9 @@ $type in $spacing-types {
         border-#{$dir}: 1px solid $border-color;
     }
 }
+.border{
+    border:1px solid $border-color
+}
 
 //line-height
 @each $sizeKey,
