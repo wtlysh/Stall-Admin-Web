@@ -1,0 +1,18 @@
+//写改变的的element ui的样式
+
+.el-header {
+    color: white;
+    line-height: 100px;
+    font-size: 25px;
+  }
+  .el-tabs__nav {
+    width: 100%;
+    background-color: white;
+  }
+  .el-tabs__item {
+    width: 50%;
+    text-align: center;
+    height: 70px;
+    font-size: 20px;
+    line-height: 75px;
+  }

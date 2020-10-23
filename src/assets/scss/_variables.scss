@@ -9,23 +9,19 @@ $colors: ('primary': #db9e3f,
     'grey-1':#e7e7e7,
     'dark': #505050,
     'black': #000,
+    'black-1': #2c3e50
 );
 
 $border-color: map-get($colors, 'grey-1');
 
 // font size
 $base-font-size: 1rem;
-$font-sizes: (xxs: 0.6154rem,
-    xs: 0.7692rem,
-    //10px
-    sm: 0.9231rem,
-    //12px
-    md: 1rem,
-    //13px
-    lg: 1.0769rem,
-    //14px
-    xl: 1.2308rem,
-    //16px,,,,
+$font-sizes: (xxs: 10px,
+    xs: 12px,
+    sm: 15px,
+    md: 18px,
+    lg: 20px,
+    xl: 25px,
 );
 $flex-jc: (start: flex-start,
     end: flex-end,
@@ -50,11 +46,11 @@ $spacing-directions: (t: top,
     l: left,
 );
 $spacing-base-size: 1rem;
-$spacing-sizes: (0: 0rem,
-    1: 0.25rem,
-    2: 0.5rem,
-    3: 1rem,
-    4: 15px,
-    5: 1.5rem,
-    6: 3rem,
+$spacing-sizes: (0: 0px,
+    1: 20px,
+    2: 25px,
+    3: 30px,
+    4: 35px,
+    5: 40px,
+    6: 45px,
 );
