@@ -1,47 +1,63 @@
 <template>
   <div id="login">
-    <div class="login-title right relative">
+    <div class="title relative right">
       <h1 class="mb-6">Welcome to</h1>
       <h2>城市地摊片区规划及地摊线上综合管理系统 ! !</h2>
     </div>
-    <el-card header="登录" class="login-card absolute text-center fs-xl">
-      <el-form @submit.native.prevent="login">
-        <el-form-item label="用户名">
-          <el-input v-model="model.username"></el-input>
-        </el-form-item>
-        <el-form-item label="密码">
-          <el-input type="password" v-model="model.password"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button
-            type="primary"
-            native-type="submit"
-            class="fs-xl"
-            style="width: 90%"
-            >登录</el-button
-          >
-        </el-form-item>
-      </el-form>
-    </el-card>
+    <el-form class="login-card absolute" label-position="left">
+      <h3 class="login-title fs-md">登录</h3>
+      <el-form-item label="用户名">
+        <el-input
+          type="text"
+          v-model="loginForm.username"
+          auto-complete="off"
+          placeholder="请输入用户名"
+        ></el-input>
+      </el-form-item>
+      <el-form-item label="密码" class="pb-2 pt-1">
+        <el-input
+          type="password"
+          v-model="loginForm.password"
+          auto-complete="off"
+          placeholder="请输入密码"
+        ></el-input>
+      </el-form-item>
+      <el-form-item style="width: 100%">
+        <el-button
+          type="primary"
+          style="width: 100%; background: #505458; border: none"
+          v-on:click="login"
+          >登录</el-button
+        >
+      </el-form-item>
+    </el-form>
   </div>
 </template>
 <script>
 export default {
+  name: "Login",
   data() {
     return {
-      model: {},
+      loginForm: {
+        username: "",
+        password: "",
+      },
+      responseResult: [],
     };
   },
   methods: {
-    async login() {
-      const res = await this.$http.post("login", this.model);
-      // sessionStorage.token = res.data.token
-      localStorage.token = res.data.token;
-      this.$router.push("/");
-      this.$message({
-        type: "success",
-        message: "登录成功",
-      });
+    login() {
+      this.$axios
+        .post("/login", {
+          username: this.loginForm.username,
+          password: this.loginForm.password,
+        })
+        .then((successResponse) => {
+          if (successResponse.data.code === 200) {
+            this.$router.replace({ path: "/" });
+          }
+        })
+        .catch((failResponse) => {});
     },
   },
 };
@@ -57,16 +73,27 @@ export default {
   background-position: 0px 0px;
   background-size: 100% 100%;
   font-size: 30upx;
-  .login-card {
-    width: 500px;
-    height: 600px;
-    top: 18rem;
-    right: 28rem;
-  }
-  .login-title {
+  .title {
     font-size: 20px;
-    right: 20rem;
+    right: 10rem;
     top: 6rem;
+  }
+  .login-card {
+    border-radius: 15px;
+    background-clip: padding-box;
+    top: 20rem;
+    right: 22rem;
+    width: 450px;
+    height: 500px;
+    padding: 35px 35px 15px 35px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 0 25px #cac6c6;
+    .login-title {
+      margin: 0px auto 40px auto;
+      text-align: center;
+      color: #505458;
+    }
   }
 }
 </style>
